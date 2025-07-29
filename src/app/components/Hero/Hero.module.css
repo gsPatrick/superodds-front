@@ -1,0 +1,141 @@
+/* src/app/components/Hero/Hero.module.css (COMPLETO E ATUALIZADO) */
+.heroSection {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background-image: url('/images/hero-bg.jpg');
+  background-size: cover;
+  /* Sua configuração para desktop, mantida como pediu */
+  background-position: 10% center; 
+  position: relative;
+  padding-top: 80px;
+}
+
+.heroSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, var(--dark-bg) 20%, rgba(30, 32, 31, 0.7) 50%, transparent 70%);
+  z-index: 1;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 1.5rem;
+}
+
+.logo {
+  font-size: 1rem;
+  font-weight: 700;
+  background-color: rgba(41, 40, 41, 0.8);
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid var(--primary-green);
+  text-transform: uppercase;
+}
+
+.logoHighlight {
+  color: var(--primary-green);
+}
+
+.headline {
+  font-size: 4.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1;
+  color: #fff;
+  text-shadow: 0px 4px 15px rgba(0,0,0,0.4);
+}
+
+.subheadline {
+  font-size: 1.2rem;
+  max-width: 480px; 
+  line-height: 1.6;
+  color: var(--text-light);
+  font-weight: 400;
+}
+
+.highlight {
+  color: var(--primary-green);
+  font-weight: 700;
+}
+
+.ctaButton {
+  background-color: var(--primary-green);
+  color: var(--text-dark);
+  padding: 20px 40px;
+  border-radius: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 5px 20px rgba(183, 238, 35, 0.4);
+  animation: pulse 2s infinite;
+  margin-top: 1rem;
+}
+
+.ctaButton:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px var(--primary-green);
+  animation-play-state: paused;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+
+/* =========================================== */
+/* ✨ MUDANÇAS PARA O MOBILE ESTÃO AQUI ✨ */
+/* =========================================== */
+@media (max-width: 768px) {
+  .heroSection {
+    /* MUDANÇA 1: Alinha o conteúdo na parte de baixo da tela */
+    align-items: flex-end;
+    /* Adiciona um respiro na parte de baixo */
+    padding-bottom: 6rem;
+    
+    /* MUDANÇA 2: Centraliza o rosto do especialista */
+    /* 40% vai "puxar" a imagem da direita mais para o centro */
+    background-position: 50% center; 
+  }
+
+  .heroSection::before {
+    /* Gradiente mais forte vindo de baixo para garantir a leitura do texto */
+    background: linear-gradient(to top, var(--dark-bg) 25%, transparent 90%), 
+                rgba(30, 32, 31, 0.7);
+  }
+  
+  .heroContent {
+    align-items: center;
+    text-align: center;
+  }
+  
+  .headline {
+    /* MUDANÇA 3: Reduz o tamanho do título */
+    font-size: 2.2rem;
+  }
+  .subheadline {
+    /* MUDANÇA 3: Reduz o tamanho do subtítulo */
+    font-size: 0.9rem;
+    padding: 0 10px;
+    max-width: 95%;
+  }
+  .ctaButton {
+    /* MUDANÇA 3: Reduz o tamanho do botão */
+    padding: 15px 30px;
+    font-size: 1rem;
+  }
+}

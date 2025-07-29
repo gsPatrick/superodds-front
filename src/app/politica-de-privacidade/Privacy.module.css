@@ -1,0 +1,71 @@
+.privacyPage {
+  background-color: var(--dark-bg);
+  color: var(--text-light);
+  padding: 120px 20px 60px 20px; /* Espaço para o header fixo */
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 800px;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--primary-green);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.lastUpdated {
+  text-align: center;
+  color: #888;
+  margin-bottom: 3rem;
+  font-style: italic;
+}
+
+.sectionTitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+  border-bottom: 2px solid var(--primary-green);
+  padding-bottom: 0.5rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #ccc;
+  margin-bottom: 1rem;
+}
+
+.list {
+  list-style-position: inside;
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+.listItem {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #ccc;
+  margin-bottom: 0.8rem;
+}
+
+.listItem strong {
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.2rem;
+  }
+  .sectionTitle {
+    font-size: 1.5rem;
+  }
+  .text, .listItem {
+    font-size: 1rem;
+  }
+}
