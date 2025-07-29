@@ -88,7 +88,7 @@ const ChamadaFinal = () => {
           Esta é a sua chance final de garantir acesso gratuito. Depois que as vagas acabarem, o grupo será fechado por tempo indeterminado. Não fique de fora.
         </p>
         <a
-          href="https://wa.me/5551999999999"
+          href="https://t.me/melhoressuperodds"
           target="_blank"
           rel="noopener noreferrer"
           className={styles.ctaButton}

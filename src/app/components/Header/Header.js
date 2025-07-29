@@ -29,7 +29,7 @@ const Header = () => {
         </Link>
         
         <a
-          href="https://wa.me/5551999999999" // Link do grupo
+          href="https://t.me/melhoressuperodds" // Link do grupo
           target="_blank"
           rel="noopener noreferrer"
           className={styles.ctaButton}

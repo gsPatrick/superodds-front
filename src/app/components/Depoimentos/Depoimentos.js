@@ -112,7 +112,7 @@ const Depoimentos = () => {
                 Viu como funciona? Chegou a sua vez de ter acesso às mesmas oportunidades.
             </h3>
             <a
-              href="https://wa.me/5551999999999" // Link do grupo
+              href="https://t.me/melhoressuperodds" // Link do grupo
               target="_blank"
               rel="noopener noreferrer"
               className={styles.ctaButton}
