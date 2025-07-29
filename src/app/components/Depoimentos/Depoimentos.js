@@ -21,37 +21,37 @@ const Depoimentos = () => {
       nome: 'João P.',
       cidade: 'São Paulo, SP',
       texto: '“Finalmente um grupo sério e com análises que fazem sentido. Saí de vários grupos que só mandavam ‘sinal’ sem pé nem cabeça. Aqui a história é outra, é profissionalismo puro.”',
-      imagem: '/images/avatars/avatar1.jpg',
+      imagem: '/joao.jpg',
     },
     {
       nome: 'Carlos A.',
       cidade: 'Belo Horizonte, MG',
       texto: '“O que eu mais gosto é a organização. Poucas entradas por dia, mas todas com uma qualidade absurda. Já consegui resultados que não tive em meses em outros lugares.”',
-      imagem: '/images/avatars/avatar2.jpg',
+      imagem: '/carlos.jpg',
     },
     {
       nome: 'Mariana S.',
       cidade: 'Rio de Janeiro, RJ',
       texto: '“Tinha medo de não entender nada, mas as análises são muito claras. O grupo é focado e sem bagunça. Para quem está começando, como eu, é o lugar perfeito para aprender de verdade.”',
-      imagem: '/images/avatars/avatar3.jpg',
+      imagem: '/mariana.jpg',
     },
      {
       nome: 'Lucas F.',
       cidade: 'Curitiba, PR',
       texto: '“A taxa de acerto das análises é impressionante. É nítido que existe um estudo muito aprofundado por trás de cada Super Odd enviada. Recomendo 100%.”',
-      imagem: '/images/avatars/avatar4.jpg',
+      imagem: '/lucas.jpg',
     },
      {
       nome: 'Fernanda L.',
       cidade: 'Salvador, BA',
       texto: '“Entrei com um pé atrás, por ser gratuito, mas a qualidade do conteúdo é de grupo VIP pago. Superou todas as minhas expectativas. O nome Super Odds faz jus!”',
-      imagem: '/images/avatars/avatar5.jpg',
+      imagem: '/fernanda.jpg',
     },
      {
       nome: 'Rafael M.',
       cidade: 'Porto Alegre, RS',
       texto: '“A transparência é o ponto alto. Eles explicam o porquê da entrada, mostram os resultados. Isso passa uma confiança que eu não encontrei em nenhum outro lugar.”',
-      imagem: '/images/avatars/avatar6.jpg',
+      imagem: '/rafael.jpg',
     },
   ];
 
@@ -90,7 +90,7 @@ const Depoimentos = () => {
             <div key={index} className={styles.card}>
               <p className={styles.text}>{depo.texto}</p>
               <div className={styles.author}>
-                <Image 
+                <Image
                   src={depo.imagem}
                   alt={`Depoimento de ${depo.nome}`}
                   width={50}

@@ -54,12 +54,11 @@ const OQueTem = () => {
     <section className={styles.section} ref={sectionRef}>
       <div className={`${styles.gridWrapper} container`}>
         <div className={styles.imageContainer} ref={imageRef}>
-          {/* ✨✨✨ MUDANÇA PRINCIPAL AQUI ✨✨✨ */}
           <Image
-            src="/images/telegram.png" // Novo caminho da imagem
+            src="/images/Smartphone.png"
             alt="Print do grupo de Super Odds no Telegram"
-            width={500}  // Largura base
-            height={650} // Altura maior para criar a proporção retangular
+            width={700}
+            height={1450}
             className={styles.image}
           />
         </div>

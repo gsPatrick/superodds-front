@@ -1,4 +1,4 @@
-/* src/app/components/OQueTem/OQueTem.module.css (AJUSTE PARA IMAGEM PURA) */
+/* src/app/components/OQueTem/OQueTem.module.css (IMAGEM SEM FUNDO E COM ANIMAÇÃO) */
 .section {
   background-color: var(--dark-bg);
   padding: 120px 20px;
@@ -28,26 +28,28 @@
   z-index: 2;
 }
 
-/* --- MUDANÇAS AQUI --- */
 .imageContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* Removemos a altura fixa, padding, borda e fundo. */
-  /* Agora é apenas um container flex invisível. */
+  height: 100%;
 }
 
 .image {
-  max-width: 100%;
-  height: auto; /* A altura será determinada pela proporção da imagem e sua largura */
-  border-radius: 16px; /* A borda arredondada fica na própria imagem */
-  
-  /* Não precisamos mais do object-fit, pois a imagem definirá seu próprio tamanho. */
-  /* Adicionamos uma sombra para dar profundidade e destaque */
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  min-height: 600px;
+  object-fit: cover;
+  /* Removido border-radius e box-shadow para manter a transparência */
+  /* Adicionada animação suave de movimento no hover */
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
 }
-/* --- FIM DAS MUDANÇAS --- */
 
+.image:hover {
+  transform: translateY(-10px) rotate(2deg) scale(1.05);
+}
 
 .contentContainer {
   display: flex;
@@ -167,5 +169,15 @@
   }
   .ctaButton {
     align-self: center;
+  }
+  
+  .image {
+    max-width: 350px;
+    min-height: 500px;
+  }
+  
+  /* Reduzir animação no mobile para melhor performance */
+  .image:hover {
+    transform: translateY(-5px) scale(1.02);
   }
 }
