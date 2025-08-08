@@ -30,7 +30,7 @@ const Footer = () => {
           </p>
         </div>
         <div className={styles.bottomBar}>
-          <p>© {currentYear} Boleiro Tips. Todos os direitos reservados.</p>
+          <p>© {currentYear} Boleiros Tips. Todos os direitos reservados.</p>
           <Link href="/politica-de-privacidade" className={styles.privacyLink}>
             Política de Privacidade
           </Link>
