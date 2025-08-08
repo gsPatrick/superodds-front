@@ -1,7 +1,7 @@
-// src/app/components/Footer/Footer.js (ATUALIZADO COM LOGO MAIOR)
+// src/app/components/Footer/Footer.js (ATUALIZADO PARA BOLEIROS 3.0)
 
 import Link from 'next/link';
-import Image from 'next/image'; // 1. Importar o componente Image
+import Image from 'next/image';
 import styles from './Footer.module.css';
 
 const Footer = () => {
@@ -11,17 +11,24 @@ const Footer = () => {
     <footer className={styles.footer}>
       <div className={`${styles.container} container`}>
         
-        {/* 2. O logo em texto foi substituído por este Link com a Imagem */}
         <Link href="/">
           <Image
-            src="/images/logo.png" // Caminho a partir da pasta 'public'
-            alt="Super Odds Logo"
-            width={200}  // Maior que a do header (150px)
-            height={200}   // Mantém a proporção (aprox.)
+            src="/images/logo.png"
+            alt="Boleiros 3.0 Logo"
+            width={200}
+            height={200}
           />
         </Link>
         
         <div className={styles.disclaimers}>
+          {/* ✨ NOVA SEÇÃO DE RESPONSABILIDADE ADICIONADA ✨ */}
+          <div className={styles.responsibilitySection}>
+            <h3 className={styles.responsibilityTitle}>🔒 Aqui é conteúdo com responsabilidade</h3>
+            <p className={styles.responsibilityText}>
+              Sem promessas de lucro fácil. Aqui é conteúdo opinativo, com leitura de jogo e entretenimento pra quem ama futebol e aposta com consciência.
+            </p>
+          </div>
+
           <p className={styles.warning18}>
             Atenção: Conteúdo destinado para maiores de 18 anos.
           </p>

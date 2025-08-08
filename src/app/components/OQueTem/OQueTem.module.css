@@ -1,4 +1,4 @@
-/* src/app/components/OQueTem/OQueTem.module.css (IMAGEM SEM FUNDO E COM ANIMAÇÃO) */
+/* src/app/components/OQueTem/OQueTem.module.css (COMPLETO COM LAYOUT INVERTIDO) */
 .section {
   background-color: var(--dark-bg);
   padding: 120px 20px;
@@ -10,7 +10,8 @@
   content: '';
   position: absolute;
   top: 50%;
-  left: 25%;
+  /* Posição do brilho ajustada para o novo layout */
+  left: 75%; 
   transform: translate(-50%, -50%);
   width: 800px;
   height: 800px;
@@ -21,11 +22,19 @@
 
 .gridWrapper {
   display: grid;
-  grid-template-columns: 45% 55%;
+  /* ✨✨✨ PROPORÇÃO DAS COLUNAS INVERTIDA ✨✨✨ */
+  /* Agora a primeira coluna (conteúdo) tem 55% e a segunda (imagem) tem 45% */
+  grid-template-columns: 55% 45%; 
   align-items: center;
   gap: 5rem;
   position: relative;
   z-index: 2;
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .imageContainer {
@@ -41,20 +50,12 @@
   height: auto;
   min-height: 600px;
   object-fit: cover;
-  /* Removido border-radius e box-shadow para manter a transparência */
-  /* Adicionada animação suave de movimento no hover */
   transition: transform 0.3s ease-in-out;
   cursor: pointer;
 }
 
 .image:hover {
-  transform: translateY(-10px) rotate(2deg) scale(1.05);
-}
-
-.contentContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+  transform: translateY(-10px) rotate(-2deg) scale(1.05); /* Rotação invertida */
 }
 
 .title {
@@ -69,51 +70,35 @@
   text-shadow: 0 0 10px rgba(183, 238, 35, 0.5);
 }
 
-.description {
-  font-size: 1.1rem;
-  line-height: 1.7;
-  color: #ccc;
-  max-width: 95%;
-  margin-bottom: 1rem;
-}
-
 .featureList {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  margin-top: 1rem;
 }
 
 .featureItem {
   display: flex;
   align-items: flex-start;
-  gap: 1.5rem;
+  gap: 1rem;
   background-color: var(--dark-secondary);
-  padding: 1rem;
+  padding: 1.2rem;
   border-radius: 12px;
   border: 1px solid #292829;
 }
 
 .icon {
-  font-size: 1.5rem;
-  line-height: 1;
-  background-color: rgba(183, 238, 35, 0.1);
-  padding: 12px;
-  border-radius: 8px;
+  color: var(--primary-green);
   margin-top: 5px;
-}
-
-.featureTitle {
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin-bottom: 0.4rem;
-  color: var(--text-light);
+  flex-shrink: 0;
 }
 
 .featureText {
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #aaa;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #ddd;
+  font-weight: 500;
 }
 
 .ctaButton {
@@ -150,19 +135,20 @@
     grid-template-columns: 1fr;
     gap: 3rem;
   }
-  .imageContainer {
-    order: 1;
-  }
+  
+  /* ✨✨✨ ORDEM NO MOBILE INVERTIDA ✨✨✨ */
+  /* Agora o conteúdo aparece primeiro e a imagem depois */
   .contentContainer {
-    order: 2;
+    order: 1; 
     text-align: center;
     align-items: center;
   }
+  .imageContainer {
+    order: 2;
+  }
+  
   .title {
     font-size: 2.2rem;
-  }
-  .description {
-    max-width: 100%;
   }
   .featureItem {
     text-align: left;
@@ -176,7 +162,6 @@
     min-height: 500px;
   }
   
-  /* Reduzir animação no mobile para melhor performance */
   .image:hover {
     transform: translateY(-5px) scale(1.02);
   }

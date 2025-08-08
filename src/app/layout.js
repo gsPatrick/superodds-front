@@ -1,30 +1,26 @@
-// src/app/layout.js (CÓDIGO COMPLETO E CORRETO)
+// src/app/layout.js (ATUALIZADO PARA BOLEIROS 3.0)
 
-import { Poppins } from 'next/font/google'; // A importação estava correta
+import { Poppins } from 'next/font/google';
 import './globals.css';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import SocialProofPopup from './components/SocialProofPopup/SocialProofPopup';
 import ExitIntentModal from './components/ExitIntentModal/ExitIntentModal';
 
-// ✨✨ ESTA PARTE ESTAVA FALTANDO NA ÚLTIMA RESPOSTA ✨✨
-// Aqui estamos definindo a constante 'poppins'
 const poppins = Poppins({
   subsets: ['latin'],
   weight: ['400', '500', '700', '900']
 });
-// ✨✨ FIM DA PARTE QUE FALTAVA ✨✨
 
-
+// ✨ METADADOS ATUALIZADOS PARA A NOVA COPY ✨
 export const metadata = {
-  title: 'Grupo de Super Odds - As Melhores Odds do Brasil',
-  description: 'Entre gratuitamente no grupo exclusivo e receba as Super Odds mais procuradas e analisadas por especialistas.',
+  title: 'Boleiros 3.0 - Futebol, NBA & Odds Altas em um só lugar',
+  description: 'A união dos 3 melhores grupos de palpites do Brasil: Futebol, NBA e Odds Altas. Palpites analisados, leitura de jogo ao vivo e palpites com valor real.',
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="pt-BR">
-      {/* Agora a constante 'poppins' existe e pode ser usada aqui */}
       <body className={poppins.className}>
         <Header />
         <main>{children}</main>

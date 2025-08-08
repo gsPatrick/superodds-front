@@ -1,4 +1,4 @@
-/* src/app/components/Beneficios/Beneficios.module.css (COMPLETO COM A CORREÇÃO FINAL) */
+/* src/app/components/Beneficios/Beneficios.module.css (ATUALIZADO) */
 
 .beneficiosSection {
   background-color: var(--dark-bg);
@@ -23,7 +23,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3rem;
+  gap: 1rem; /* Reduzido para aproximar o novo texto do título */
   text-align: center;
   position: relative;
   z-index: 2;
@@ -33,8 +33,18 @@
   font-size: 2.8rem;
   font-weight: 900;
   text-transform: uppercase;
-  max-width: 700px;
+  max-width: 800px; /* Aumentado para o novo título */
   line-height: 1.3;
+}
+
+/* ✨✨ ESTILO ADICIONADO PARA O PARÁGRAFO DE INTRODUÇÃO ✨✨ */
+.beneficiosIntro {
+  font-size: 1.2rem;
+  color: #ccc;
+  line-height: 1.6;
+  max-width: 700px;
+  margin-top: -0.5rem; /* Puxa para mais perto do título */
+  margin-bottom: 2rem; /* Espaço antes da grid */
 }
 
 .beneficiosHighlight {
@@ -58,13 +68,8 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  
-  /* ✨✨✨ MUDANÇA CRUCIAL AQUI: OS CARDS COMEÇAM INVISÍVEIS ✨✨✨ */
   opacity: 0;
-  
-  /* Inicializa a transformação que a GSAP vai reverter */
   transform: translateY(50px) scale(0.9);
-  
   gap: 1rem;
   transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   position: relative;
@@ -78,8 +83,9 @@
 
 .cardTitle {
   color: var(--primary-green);
-  font-size: 1.4rem;
+  font-size: 1.6rem; /* Aumentei um pouco para dar destaque */
   font-weight: 700;
+  text-transform: uppercase; /* Deixei em maiúsculo para mais impacto */
 }
 
 .cardDescription {
@@ -89,6 +95,7 @@
   flex-grow: 1;
 }
 
+/* O restante do CSS (efeitos de borda, hover, botão, media queries) permanece o mesmo */
 .beneficiosCard::before {
   content: '';
   position: absolute;
@@ -135,7 +142,7 @@
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease;
   border: none;
   cursor: pointer;
-  margin-top: 1rem;
+  margin-top: 2rem; /* Aumentei o espaçamento superior */
 }
 
 .beneficiosCtaButton:hover {
@@ -151,7 +158,10 @@
 
 @media (max-width: 768px) {
   .beneficiosTitle {
-    font-size: 1.8rem;
+    font-size: 2rem; /* Ajustei o tamanho para mobile */
+  }
+  .beneficiosIntro {
+    font-size: 1rem;
   }
   .beneficiosGrid {
     grid-template-columns: 1fr;

@@ -1,4 +1,4 @@
-// src/app/components/Beneficios/Beneficios.js (COMPLETO COM A CORREÇÃO FINAL)
+// src/app/components/Beneficios/Beneficios.js (ATUALIZADO PARA BOLEIROS 3.0)
 'use client';
 
 import { useRef, useLayoutEffect } from 'react';
@@ -11,12 +11,13 @@ gsap.registerPlugin(ScrollTrigger);
 const Beneficios = () => {
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
+  const introRef = useRef(null); // Ref para o novo parágrafo
   const gridRef = useRef(null);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      // Animação para o título (pode continuar como .from())
-      gsap.from(titleRef.current, {
+      // Animação para o título e parágrafo de introdução
+      gsap.from([titleRef.current, introRef.current], {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: 'top 80%',
@@ -24,21 +25,21 @@ const Beneficios = () => {
         },
         opacity: 0,
         y: 50,
+        stagger: 0.2,
         duration: 0.8,
         ease: 'power3.out',
       });
 
-      // ✨✨✨ LÓGICA DE ANIMAÇÃO REVISADA: DE .from() PARA .to() ✨✨✨
-      // Os cards começam invisíveis via CSS e animamos PARA o estado visível.
+      // Animação para os cards
       gsap.to(gridRef.current.children, {
         scrollTrigger: {
           trigger: gridRef.current,
           start: 'top 85%',
           toggleActions: 'play none none none',
         },
-        opacity: 1, // Torna-se visível
-        y: 0,      // Volta para a posição original (Y)
-        scale: 1,  // Volta para a escala original
+        opacity: 1,
+        y: 0,
+        scale: 1,
         stagger: 0.15,
         duration: 0.8,
         ease: 'power3.out',
@@ -48,21 +49,39 @@ const Beneficios = () => {
     return () => ctx.revert();
   }, []);
 
+  // ✨✨ DADOS ATUALIZADOS PARA OS 3 PILARES DO BOLEIROS 3.0 ✨✨
   const beneficios = [
-    { icon: '📈', title: 'Odds Validadas', description: 'Super Odds atualizadas e analisadas por nossa equipe de especialistas.' },
-    { icon: '🎯', title: 'Análise de Ponta', description: 'Nossos analistas se dedicam a encontrar as melhores oportunidades do mercado.' },
-    { icon: '📱', title: 'Acompanhamento', description: 'Receba as entradas com antecedência e acompanhe os jogos conosco.' },
-    { icon: '🛡️', title: 'Casas Seguras', description: 'Operamos apenas com as casas de apostas mais confiáveis e regulamentadas.' },
-    { icon: '💸', title: '100% Gratuito', description: 'Você não paga absolutamente nada para fazer parte do grupo de elite.' },
-    { icon: '💬', title: 'Comunidade', description: 'Somente para maiores de 18. Jogue com responsabilidade' },
+    { 
+      icon: '⚽', 
+      title: 'Futebol', 
+      description: 'Palpites analisados, palpite com valor real e cobertura dos principais campeonatos do mundo.' 
+    },
+    { 
+      icon: '🏀', 
+      title: 'NBA', 
+      description: 'Melhores oportunidades no mundo da bola laranja' 
+    },
+    { 
+      icon: '💥', 
+      title: 'Odds Altas', 
+      description: 'Palpites ousadas, pensadas com critério, e que mudam o jogo quando batem.' 
+    },
   ];
 
   return (
     <section className={styles.beneficiosSection} ref={sectionRef}>
       <div className={`${styles.beneficiosContainer} container`}>
+        
+        {/* ✨ TÍTULO ATUALIZADO ✨ */}
         <h2 className={styles.beneficiosTitle} ref={titleRef}>
-          Aqui você tem acesso ao que <span className={styles.beneficiosHighlight}>realmente funciona</span>
+          O QUE É O <span className={styles.beneficiosHighlight}>BOLEIROS 3.0?</span>
         </h2>
+        
+        {/* ✨ PARÁGRAFO DE INTRODUÇÃO ADICIONADO ✨ */}
+        <p className={styles.beneficiosIntro} ref={introRef}>
+          O Boleiros 3.0 é a união dos 3 grupos de maior sucesso do nosso VIP, tudo em um só lugar:
+        </p>
+        
         <div className={styles.beneficiosGrid} ref={gridRef}>
           {beneficios.map((beneficio, index) => (
             <div key={index} className={styles.beneficiosCard}>
@@ -72,13 +91,15 @@ const Beneficios = () => {
             </div>
           ))}
         </div>
+        
+        {/* ✨ TEXTO DO BOTÃO ATUALIZADO ✨ */}
         <a
-          href="https://t.me/melhoressuperodds"
+          href="https://hub.la/g/Pn5INxvNv3z8taCv7LI1"
           target="_blank"
           rel="noopener noreferrer"
           className={styles.beneficiosCtaButton}
         >
-          QUERO ENTRAR NO GRUPO
+          QUERO ENTRAR AGORA NO GRUPO
         </a>
       </div>
     </section>

@@ -1,20 +1,18 @@
-// src/app/components/SocialProofPopup/SocialProofPopup.js (VERSÃO REFINADA E RESPONSÁVEL)
+// src/app/components/SocialProofPopup/SocialProofPopup.js (ATUALIZADO PARA BOLEIROS 3.0)
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import styles from './SocialProofPopup.module.css';
 
-// ✨✨✨ 1. NOVA LISTA DE DADOS - SEM LUCRO, COM ACERTOS DE ODDS ✨✨✨
+// ✨✨ LISTA DE DADOS ATUALIZADA COM NOVOS NOMES E ATIVIDADES ✨✨
 const proofData = [
-  { name: 'Maria C.', location: 'Salvador, BA', type: 'join' },
-  { name: 'Ricardo L.', location: 'Recife, PE', type: 'hit', oddValue: '3.75' },
-  { name: 'Juliana P.', location: 'Florianópolis, SC', type: 'join' },
-  { name: 'Fernando G.', location: 'Goiânia, GO', type: 'hit', oddValue: '4.50' },
-  { name: 'André B.', location: 'Brasília, DF', type: 'join' },
-  { name: 'Beatriz M.', location: 'Manaus, AM', type: 'hit', oddValue: '2.90' },
-  { name: 'Tiago S.', location:'Fortaleza, CE', type: 'join' },
-  { name: 'Carla V.', location: 'Porto Alegre, RS', type: 'hit', oddValue: '4.20' },
+  { name: 'Ricardo F.', location: 'São Paulo, SP', type: 'join' },
+  { name: 'Caio A.', location: 'Goiânia, GO', type: 'hit_nba', oddValue: '3.50' },
+  { name: 'Ana V.', location: 'Belo Horizonte, MG', type: 'join' },
+  { name: 'Milton S.', location: 'Recife, PE', type: 'hit_odds', oddValue: '5.20' },
+  { name: 'Juninho C.', location: 'Salvador, BA', type: 'join' },
+  { name: 'Rafael N.', location: 'Porto Alegre, RS', type: 'hit_futebol', oddValue: '2.90' },
 ];
 
 const SocialProofPopup = () => {
@@ -30,29 +28,20 @@ const SocialProofPopup = () => {
   };
 
   useEffect(() => {
+    // Animações mantidas
     if (isVisible) {
-      gsap.fromTo(
-        popupRef.current,
-        { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.5, ease: 'power3.out' }
-      );
+      gsap.fromTo(popupRef.current, { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: 'power3.out' });
     } else {
-      gsap.to(popupRef.current, {
-        y: 50,
-        opacity: 0,
-        duration: 0.5,
-        ease: 'power3.in',
-      });
+      gsap.to(popupRef.current, { y: 50, opacity: 0, duration: 0.5, ease: 'power3.in' });
     }
   }, [isVisible]);
 
   useEffect(() => {
+    // Lógica de tempo mantida
     const scheduleNextPopup = () => {
       clearTimeout(timeoutId.current);
       if (isVisible) setIsVisible(false);
-
       const randomDelay = Math.random() * 4000 + 4000;
-      
       timeoutId.current = setTimeout(() => {
         showRandomPopup();
         timeoutId.current = setTimeout(() => {
@@ -61,46 +50,45 @@ const SocialProofPopup = () => {
         }, 5000); 
       }, randomDelay);
     };
-
     timeoutId.current = setTimeout(scheduleNextPopup, 5000);
-
     return () => clearTimeout(timeoutId.current);
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-
-  // ✨✨✨ 2. FUNÇÃO DE RENDERIZAÇÃO ATUALIZADA ✨✨✨
-  const renderMessage = () => {
-    if (currentProof.type === 'join') {
-      return (
-        <>
-          <span className={styles.name}>{currentProof.name}</span> de {currentProof.location} acabou de entrar no grupo!
-        </>
-      );
-    }
-    // O tipo 'win' foi trocado por 'hit'
-    if (currentProof.type === 'hit') {
-      return (
-        <>
-          <span className={styles.name}>{currentProof.name}</span> de {currentProof.location} acertou uma Super Odd <span className={styles.value}>@{currentProof.oddValue}</span>!
-        </>
-      );
+  // ✨✨ LÓGICA DE RENDERIZAÇÃO ATUALIZADA PARA OS 3 PILARES ✨✨
+  const renderContent = () => {
+    switch (currentProof.type) {
+      case 'join':
+        return {
+          icon: '🎉',
+          message: <><span className={styles.name}>{currentProof.name}</span> de {currentProof.location} acabou de entrar no time!</>
+        };
+      case 'hit_nba':
+        return {
+          icon: '🏀',
+          message: <><span className={styles.name}>{currentProof.name}</span> acertou uma na <span className={styles.highlight}>NBA</span> com odd <span className={styles.value}>@{currentProof.oddValue}</span>!</>
+        };
+      case 'hit_futebol':
+        return {
+          icon: '⚽',
+          message: <><span className={styles.name}>{currentProof.name}</span> cravou uma no <span className={styles.highlight}>Futebol</span> com odd <span className={styles.value}>@{currentProof.oddValue}</span>!</>
+        };
+      case 'hit_odds':
+        return {
+          icon: '💥',
+          message: <><span className={styles.name}>{currentProof.name}</span> pegou uma <span className={styles.highlight}>Odd Alta</span> de <span className={styles.value}>@{currentProof.oddValue}</span>!</>
+        };
+      default:
+        return { icon: '🎉', message: '' };
     }
   };
 
+  const { icon, message } = renderContent();
+
   return (
-    <div
-      ref={popupRef}
-      className={styles.popupContainer}
-      style={{ opacity: 0 }}
-    >
-      <div className={styles.icon}>
-        {/* ✨✨ 3. ÍCONE DE DINHEIRO 💰 REMOVIDO ✨✨ */}
-        {currentProof.type === 'join' ? '🎉' : '🎯'}
-      </div>
-      <div className={styles.content}>
-        {renderMessage()}
-      </div>
-       <button onClick={() => setIsVisible(false)} className={styles.closeButton}>×</button>
+    <div ref={popupRef} className={styles.popupContainer} style={{ opacity: 0 }}>
+      <div className={styles.icon}>{icon}</div>
+      <div className={styles.content}>{message}</div>
+      <button onClick={() => setIsVisible(false)} className={styles.closeButton}>×</button>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-/* src/app/components/ChamadaFinal/ChamadaFinal.module.css (VERSÃO FINAL COM CONTEXTO) */
+/* src/app/components/ChamadaFinal/ChamadaFinal.module.css (ATUALIZADO PARA BOLEIROS 3.0) */
 .section {
   background-color: var(--dark-bg);
   color: var(--text-light);
@@ -8,38 +8,8 @@
   overflow: hidden;
 }
 
-/* --- CONTADOR COM CONTEXTO --- */
-.bgCounterContainer {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  line-height: 1;
-  opacity: 0.15; /* Aplicar opacidade no container todo */
-}
-
-.bgNumber {
-  font-size: 28vw;
-  font-weight: 900;
-  color: var(--primary-green);
-  -webkit-text-stroke: 2px rgba(183, 238, 35, 0.5);
-  text-shadow: 0 0 30px rgba(183, 238, 35, 0.2);
-}
-
-.bgText {
-  font-size: 5vw;
-  font-weight: 700;
-  color: var(--primary-green);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-top: -2vw; /* Puxa o texto para mais perto do número */
-}
-
-/* O resto do CSS permanece o mesmo... */
+/* --- CONTADOR REMOVIDO, ESTILOS RETIRADOS --- */
+/* .bgCounterContainer, .bgNumber, .bgText foram removidos */
 
 .particle {
   position: absolute;
@@ -53,6 +23,7 @@
 }
 .particle:nth-child(1) { top: 10%; left: 5%; animation-delay: -2s; }
 .particle:nth-child(2) { top: 20%; left: 90%; animation-delay: -4s; transform: scale(0.8); }
+/* ... (restante do CSS das partículas mantido) ... */
 .particle:nth-child(3) { top: 80%; left: 85%; animation-delay: -6s; transform: scale(1.2); }
 .particle:nth-child(4) { top: 90%; left: 10%; animation-delay: -8s; }
 .particle:nth-child(5) { top: 50%; left: 50%; animation-delay: -10s; transform: scale(0.9); }
@@ -76,50 +47,27 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  gap: 2rem; /* Aumentado o espaçamento */
   max-width: 800px;
 }
 
-.alertTag {
-  font-size: 1rem;
-  font-weight: 700;
-  background-color: rgba(41, 40, 41, 0.8);
-  padding: 8px 16px;
-  border-radius: 20px;
-  border: 1px solid var(--primary-green);
-  text-transform: uppercase;
-  color: var(--primary-green);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.alertIcon {
-    font-size: 1rem;
-    display: inline-block;
-    animation: spin 3s linear infinite;
-}
-
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
+/* .alertTag foi removido */
 
 .title {
-  font-size: 3.2rem;
+  font-size: 3.5rem; /* Aumentado o tamanho */
   font-weight: 900;
   line-height: 1.2;
-  background: linear-gradient(90deg, #fff 45%, #888 55%);
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  text-transform: uppercase; /* Adicionado uppercase para impacto */
+  color: var(--primary-green); /* Mudando a cor para destaque */
+  text-shadow: 0 0 20px rgba(183, 238, 35, 0.6);
 }
 
 .subtitle {
-  font-size: 1.1rem;
+  font-size: 1.5rem; /* Aumentado o tamanho */
   line-height: 1.7;
   max-width: 650px;
   color: #ccc;
+  font-weight: 500; /* Dando mais corpo ao texto */
 }
 
 .ctaButton {
@@ -164,13 +112,11 @@
 }
 
 @media (max-width: 768px) {
-  .bgNumber { font-size: 40vw; }
-  .bgText { font-size: 8vw; margin-top: -4vw; }
   .title {
     font-size: 2.4rem;
   }
   .subtitle {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
   .ctaButton {
     font-size: 1.1rem;

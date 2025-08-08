@@ -1,4 +1,4 @@
-/* src/app/components/Footer/Footer.module.css (ATUALIZADO PARA LOGO) */
+/* src/app/components/Footer/Footer.module.css (ATUALIZADO PARA BOLEIROS 3.0) */
 .footer {
   background-color: var(--dark-secondary);
   color: #aaa;
@@ -11,19 +11,38 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 2rem;
+  gap: 2.5rem; /* Aumentado o gap */
 }
-
-/* ✨✨✨ ESTILOS DE LOGO REMOVIDOS ✨✨✨ */
-/* As classes .logo e .logoHighlight foram removidas pois o logo agora é uma imagem.
-   O alinhamento já é cuidado pelo container flex. */
 
 .disclaimers {
   max-width: 800px;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem; /* Aumentado o gap interno */
 }
+
+/* ✨✨ ESTILOS PARA A NOVA SEÇÃO DE RESPONSABILIDADE ✨✨ */
+.responsibilitySection {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #444;
+  margin-bottom: 1rem;
+}
+
+.responsibilityTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-light);
+  margin-bottom: 0.8rem;
+}
+
+.responsibilityText {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #ccc;
+}
+/* Fim dos novos estilos */
 
 .warning18 {
   font-weight: 700;
@@ -59,6 +78,12 @@
 }
 
 @media (max-width: 768px) {
+  .responsibilityTitle {
+    font-size: 1.1rem;
+  }
+  .responsibilityText {
+    font-size: 0.9rem;
+  }
   .warning18 {
     font-size: 1rem;
   }

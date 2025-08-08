@@ -1,4 +1,4 @@
-// src/app/components/ExitIntentModal/ExitIntentModal.js
+// src/app/components/ExitIntentModal/ExitIntentModal.js (ATUALIZADO PARA BOLEIROS 3.0)
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
@@ -11,19 +11,19 @@ const ExitIntentModal = () => {
     const hasBeenShown = useRef(false);
 
     useEffect(() => {
+        // Lógica mantida
         const handleMouseOut = (e) => {
-            // Condição para ativar: mouse vai para o topo da janela
             if (e.clientY <= 0 && !hasBeenShown.current) {
                 setIsVisible(true);
                 hasBeenShown.current = true;
             }
         };
-
         document.addEventListener('mouseout', handleMouseOut);
         return () => document.removeEventListener('mouseout', handleMouseOut);
     }, []);
 
     useEffect(() => {
+        // Animação mantida
         if (isVisible) {
             gsap.to(`.${styles.overlay}`, { opacity: 1, duration: 0.3 });
             gsap.fromTo(modalRef.current, 
@@ -49,15 +49,16 @@ const ExitIntentModal = () => {
             <div ref={modalRef} className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
                 <button onClick={handleClose} className={styles.closeButton}>×</button>
                 <div className={styles.icon}>✋</div>
-                <h2 className={styles.title}>ESPERE! VOCÊ TEM CERTEZA?</h2>
-                <p className={styles.subtitle}>As Super Odds de hoje já estão no grupo. Você está a um clique de perder a oportunidade que pode mudar seu dia.</p>
+                {/* ✨ COPY DO MODAL TOTALMENTE ATUALIZADA ✨ */}
+                <h2 className={styles.title}>ESPERA, NÃO VAI EMBORA AINDA!</h2>
+                <p className={styles.subtitle}>Você está a um passo de perder as melhores análises de Futebol, NBA e as Odds Altas mais criteriosas do mercado. Tem certeza que quer ficar de fora do time?</p>
                 <a 
-                    href="https://t.me/melhoressuperodds"
+                    href="https://hub.la/g/Pn5INxvNv3z8taCv7LI1"
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.ctaButton}
                 >
-                    NÃO VOU FICAR DE FORA
+                    QUERO GARANTIR MEU ACESSO
                 </a>
             </div>
         </div>

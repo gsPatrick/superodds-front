@@ -1,4 +1,4 @@
-// src/app/components/OQueTem/OQueTem.js (ATUALIZADO COM PRINT DO GRUPO)
+// src/app/components/OQueTem/OQueTem.js (COMPLETO COM LAYOUT INVERTIDO)
 'use client';
 
 import { useRef, useLayoutEffect } from 'react';
@@ -6,6 +6,7 @@ import Image from 'next/image';
 import styles from './OQueTem.module.css';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import CheckIcon from '../Icons/CheckIcon';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,6 +17,9 @@ const OQueTem = () => {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
+      // ✨✨✨ ANIMAÇÕES INVERTIDAS PARA ACOMPANHAR O NOVO LAYOUT ✨✨✨
+      
+      // A imagem (agora na direita) virá da direita.
       gsap.from(imageRef.current, {
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -23,10 +27,12 @@ const OQueTem = () => {
           toggleActions: 'play none none none',
         },
         opacity: 0,
-        x: -100,
+        x: 100, // Era -100, agora é 100
         duration: 1,
         ease: 'power3.out',
       });
+      
+      // O conteúdo (agora na esquerda) virá da esquerda.
       gsap.from(contentRef.current.children, {
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -34,7 +40,7 @@ const OQueTem = () => {
           toggleActions: 'play none none none',
         },
         opacity: 0,
-        x: 100,
+        x: -100, // Era 100, agora é -100
         duration: 0.8,
         stagger: 0.15,
         ease: 'power3.out',
@@ -45,38 +51,29 @@ const OQueTem = () => {
   }, []);
 
   const features = [
-    { icon: '🎯', title: 'Análise Direto ao Ponto', text: 'Sem enrolação. Você recebe apenas as análises com maior potencial de valor, prontas para serem usadas.' },
-    { icon: '🧠', title: 'Decisões Inteligentes', text: 'Nossos especialistas usam dados e experiência para filtrar o ruído e encontrar as verdadeiras joias do mercado.' },
-    { icon: '⚡', title: 'Velocidade e Praticidade', text: 'Receba tudo de forma clara e rápida no seu celular. Poucos minutos por dia são o suficiente.' },
+    { icon: <CheckIcon />, text: 'Palpites com base em estatísticas, análise e cenário de jogo' },
+    { icon: <CheckIcon />, text: 'Conteúdo direto ao ponto, enviado pelo Telegram' },
+    { icon: <CheckIcon />, text: 'Alertas diários com as melhores oportunidades do dia' },
+    { icon: <CheckIcon />, text: 'Comunidade ativa e focada em futebol, basquete e palpites inteligentes' },
+    { icon: <CheckIcon />, text: 'Zero achismo, 100% estudo e transparência' },
+    { icon: <CheckIcon />, text: 'Um time liderado por quem vive isso todos os dias' },
   ];
 
   return (
     <section className={styles.section} ref={sectionRef}>
       <div className={`${styles.gridWrapper} container`}>
-        <div className={styles.imageContainer} ref={imageRef}>
-          <Image
-            src="/images/Smartphone.png"
-            alt="Print do grupo de Super Odds no Telegram"
-            width={700}
-            height={1450}
-            className={styles.image}
-          />
-        </div>
+        
+        {/* ✨✨✨ ORDEM DOS ELEMENTOS INVERTIDA ✨✨✨ */}
+        {/* O conteúdo agora vem PRIMEIRO no código */}
         <div className={styles.contentContainer} ref={contentRef}>
           <h2 className={styles.title}>
-            O caminho mais <span className={styles.highlight}>curto e inteligente</span> para as Odds de Valor
+            Dentro do <span className={styles.highlight}>Boleiros 3.0</span> você tem:
           </h2>
-          <p className={styles.description}>
-            Esqueça os grupos que te enchem de sinais sem fundamento. Aqui, você tem acesso a um sistema profissional que filtra o mercado para você.
-          </p>
           <ul className={styles.featureList}>
             {features.map((feature, index) => (
               <li key={index} className={styles.featureItem}>
                 <span className={styles.icon}>{feature.icon}</span>
-                <div>
-                  <h3 className={styles.featureTitle}>{feature.title}</h3>
-                  <p className={styles.featureText}>{feature.text}</p>
-                </div>
+                <p className={styles.featureText}>{feature.text}</p>
               </li>
             ))}
           </ul>
@@ -86,9 +83,21 @@ const OQueTem = () => {
               rel="noopener noreferrer"
               className={styles.ctaButton}
             >
-              QUERO PEGAR ESSE ATALHO AGORA
+              QUERO ENTRAR AGORA NO GRUPO
             </a>
         </div>
+        
+        {/* A imagem agora vem DEPOIS no código */}
+        <div className={styles.imageContainer} ref={imageRef}>
+          <Image
+            src="/images/Smartphone.png"
+            alt="Celular mostrando o grupo Boleiros 3.0 no Telegram"
+            width={700}
+            height={1450}
+            className={styles.image}
+          />
+        </div>
+
       </div>
     </section>
   );

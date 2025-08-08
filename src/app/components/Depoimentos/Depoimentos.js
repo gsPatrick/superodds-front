@@ -1,4 +1,4 @@
-// src/app/components/Depoimentos/Depoimentos.js (ATUALIZADO)
+// src/app/components/Depoimentos/Depoimentos.js (ATUALIZADO PARA BOLEIROS 3.0)
 'use client';
 
 import { useRef, useLayoutEffect } from 'react';
@@ -13,55 +13,54 @@ const Depoimentos = () => {
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
   const gridRef = useRef(null);
-  const ctaRef = useRef(null); // Ref para a chamada final
+  const ctaRef = useRef(null);
 
-  // Adicione o caminho da imagem para cada depoimento
+  // ✨✨ DADOS DOS DEPOIMENTOS ATUALIZADOS CONFORME A NOVA COPY ✨✨
+  // As imagens foram mantidas e reassociadas aos novos nomes.
   const depoimentos = [
     {
-      nome: 'João P.',
+      nome: 'Ricardo Fernandes',
       cidade: 'São Paulo, SP',
-      texto: '“Finalmente um grupo sério e com análises que fazem sentido. Saí de vários grupos que só mandavam ‘sinal’ sem pé nem cabeça. Aqui a história é outra, é profissionalismo puro.”',
-      imagem: '/joao.jpg',
+      texto: '“Já entrei em muito grupo por aí, mas nunca vi a organização e análise que tem aqui. Os palpites vêm com lógica, com leitura. O Marco vive isso. Não é achismo.”',
+      imagem: '/joao.jpg', // Imagem original mantida
     },
     {
-      nome: 'Carlos A.',
+      nome: 'Caio Almeida',
+      cidade: 'Goiânia, GO',
+      texto: '“Sou viciado em NBA. Esse grupo tem leitura em tempo real, entradas certeiras e organização. Virou parte da minha rotina.”',
+      imagem: '/carlos.jpg', // Imagem original mantida
+    },
+    {
+      nome: 'Milton Silva',
+      cidade: 'Recife, PE',
+      texto: '“O grupo de Odds Altas é meu favorito. Tem menos entradas, mas todas com critério. Quando bate, é golaço!”',
+      imagem: '/rafael.jpg', // Imagem original mantida (associada a um depoimento masculino)
+    },
+     {
+      nome: 'Ana Vieira',
       cidade: 'Belo Horizonte, MG',
-      texto: '“O que eu mais gosto é a organização. Poucas entradas por dia, mas todas com uma qualidade absurda. Já consegui resultados que não tive em meses em outros lugares.”',
-      imagem: '/carlos.jpg',
-    },
-    {
-      nome: 'Mariana S.',
-      cidade: 'Rio de Janeiro, RJ',
-      texto: '“Tinha medo de não entender nada, mas as análises são muito claras. O grupo é focado e sem bagunça. Para quem está começando, como eu, é o lugar perfeito para aprender de verdade.”',
-      imagem: '/mariana.jpg',
+      texto: '“Entrei desconfiada por ser mulher, mas fui super bem recebida. Aqui não tem chute: tem análise séria. Virei fã do projeto.”',
+      imagem: '/mariana.jpg', // Imagem original mantida (associada a um depoimento feminino)
     },
      {
-      nome: 'Lucas F.',
-      cidade: 'Curitiba, PR',
-      texto: '“A taxa de acerto das análises é impressionante. É nítido que existe um estudo muito aprofundado por trás de cada Super Odd enviada. Recomendo 100%.”',
-      imagem: '/lucas.jpg',
-    },
-     {
-      nome: 'Fernanda L.',
+      nome: 'Juninho Campos',
       cidade: 'Salvador, BA',
-      texto: '“Entrei com um pé atrás, por ser gratuito, mas a qualidade do conteúdo é de grupo VIP pago. Superou todas as minhas expectativas. O nome Super Odds faz jus!”',
-      imagem: '/fernanda.jpg',
+      texto: '“Sempre achei grupo VIP papo furado… até conhecer o Boleiros 3.0. Tem estratégia, horário, e uma comunidade que entende do jogo.”',
+      imagem: '/lucas.jpg', // Imagem original mantida
     },
      {
-      nome: 'Rafael M.',
+      nome: 'Rafael Nogueira',
       cidade: 'Porto Alegre, RS',
-      texto: '“A transparência é o ponto alto. Eles explicam o porquê da entrada, mostram os resultados. Isso passa uma confiança que eu não encontrei em nenhum outro lugar.”',
-      imagem: '/rafael.jpg',
+      texto: '“Com o Boleiros 3.0, Hoje entendo o jogo, não só sigo entrada. É outro nível.”',
+      imagem: '/fernanda.jpg', // Imagem original mantida (usei a de fernanda aqui para variar)
     },
   ];
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      // Animação para o título e grid (continua a mesma)
+      // Animações originais mantidas
       gsap.from(titleRef.current, { scrollTrigger: { trigger: titleRef.current, start: 'top 85%', toggleActions: 'play none none none' }, opacity: 0, y: 50, duration: 0.8, ease: 'power3.out' });
       gsap.from(gridRef.current.children, { scrollTrigger: { trigger: gridRef.current, start: 'top 85%', toggleActions: 'play none none none' }, opacity: 0, y: 50, stagger: 0.15, duration: 0.8, ease: 'power3.out' });
-      
-      // Animação para a chamada final (subtítulo + botão)
       gsap.from(ctaRef.current.children, {
         scrollTrigger: {
           trigger: ctaRef.current,
@@ -82,12 +81,15 @@ const Depoimentos = () => {
   return (
     <section className={styles.section} ref={sectionRef}>
       <div className={`${styles.container} container`}>
+        {/* ✨ TÍTULO ATUALIZADO ✨ */}
         <h2 className={styles.title} ref={titleRef}>
-          Aprovado por quem <span className={styles.highlight}>já está no Grupo</span>
+          DEPOIMENTOS <span className={styles.highlight}>REAIS</span> DE QUEM JÁ FAZ PARTE
         </h2>
         <div className={styles.grid} ref={gridRef}>
           {depoimentos.map((depo, index) => (
             <div key={index} className={styles.card}>
+              {/* ✨ ÍCONE DE ASPAS ADICIONADO PARA ESTILO ✨ */}
+              <div className={styles.quoteIcon}>🎙️</div>
               <p className={styles.text}>{depo.texto}</p>
               <div className={styles.author}>
                 <Image
@@ -106,18 +108,18 @@ const Depoimentos = () => {
           ))}
         </div>
 
-        {/* --- NOVA CHAMADA PARA AÇÃO --- */}
+        {/* --- CHAMADA PARA AÇÃO ATUALIZADA --- */}
         <div className={styles.finalCtaContainer} ref={ctaRef}>
             <h3 className={styles.ctaSubtitle}>
-                Viu como funciona? Chegou a sua vez de ter acesso às mesmas oportunidades.
+                Estratégia, análise e uma comunidade que entende do jogo. Está pronto para fazer parte?
             </h3>
             <a
-              href="https://t.me/melhoressuperodds" // Link do grupo
+              href="https://hub.la/g/Pn5INxvNv3z8taCv7LI1"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.ctaButton}
             >
-              ENTRAR NO GRUPO GRATUITO AGORA
+              ENTRAR NO GRUPO AGORA
             </a>
         </div>
       </div>
