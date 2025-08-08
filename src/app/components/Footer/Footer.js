@@ -11,14 +11,7 @@ const Footer = () => {
     <footer className={styles.footer}>
       <div className={`${styles.container} container`}>
         
-        <Link href="/">
-          <Image
-            src="/images/logo.png"
-            alt="Boleiros 3.0 Logo"
-            width={200}
-            height={200}
-          />
-        </Link>
+       
         
         <div className={styles.disclaimers}>
           {/* ✨ NOVA SEÇÃO DE RESPONSABILIDADE ADICIONADA ✨ */}
@@ -37,7 +30,7 @@ const Footer = () => {
           </p>
         </div>
         <div className={styles.bottomBar}>
-          <p>© {currentYear} Boleiro Tips. Todos os direitos reservados.</p>
+          <p>© {currentYear} Boleiros Tips. Todos os direitos reservados.</p>
           <Link href="/politica-de-privacidade" className={styles.privacyLink}>
             Política de Privacidade
           </Link>

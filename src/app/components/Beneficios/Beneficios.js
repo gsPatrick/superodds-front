@@ -54,7 +54,7 @@ const Beneficios = () => {
     { 
       icon: '⚽', 
       title: 'Futebol', 
-      description: 'Palpites analisados, palpite com valor real e cobertura dos principais campeonatos do mundo.' 
+      description: 'Palpites analisados com valor real e cobertura dos principais campeonatos do mundo.' 
     },
     { 
       icon: '🏀', 
@@ -64,7 +64,7 @@ const Beneficios = () => {
     { 
       icon: '💥', 
       title: 'Odds Altas', 
-      description: 'Palpites ousadas, pensadas com critério, e que mudam o jogo quando batem.' 
+      description: 'Palpites ousados, pensadas com critério, e que mudam o jogo quando batem.' 
     },
   ];
 

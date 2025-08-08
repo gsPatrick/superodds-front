@@ -78,7 +78,7 @@ const OQueTem = () => {
             ))}
           </ul>
            <a
-              href="https://t.me/melhoressuperodds"
+              href="https://hub.la/g/Pn5INxvNv3z8taCv7LI1"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.ctaButton}

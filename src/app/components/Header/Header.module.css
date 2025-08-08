@@ -1,4 +1,4 @@
-/* src/app/components/Header/Header.module.css (VERSÃO FINAL COM LOGO.PNG) */
+/* src/app/components/Header/Header.module.css (VERSÃO PREMIUM COMPLETA) */
 
 /* Container geral do Header com o efeito de vidro */
 .header {
@@ -14,86 +14,337 @@
   -webkit-backdrop-filter: blur(12px);
   
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
 }
 
-/* Camada 1: Barra de Escassez Fixa */
+.header.scrolled {
+  background-color: rgba(20, 22, 21, 0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(79, 224, 49, 0.2);
+}
+
+/* ============ BARRA DE ESCASSEZ ============ */
 .urgencyBanner {
-  background-color: var(--primary-green);
+  background: linear-gradient(90deg, var(--primary-green), #5fe037, var(--primary-green));
   color: var(--text-dark);
-  padding: 6px 0;
+  padding: 8px 0;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.urgencyBanner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.urgencyContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.urgencyIcon {
+  font-size: 1rem;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-3px); }
+  60% { transform: translateY(-2px); }
 }
 
 .urgencyText {
   font-weight: 700;
   font-size: 0.8rem;
   text-transform: uppercase;
-  animation: pulseText 2s infinite ease-in-out;
+  letter-spacing: 0.5px;
 }
 
 .vacancyCount {
   background-color: var(--text-dark);
   color: var(--primary-green);
-  padding: 2px 6px;
-  border-radius: 4px;
+  padding: 3px 8px;
+  border-radius: 6px;
   margin: 0 4px;
   font-size: 0.9rem;
+  font-weight: 800;
+  animation: countPulse 1.5s infinite ease-in-out;
 }
 
-@keyframes pulseText {
-  0% { opacity: 1; }
-  50% { opacity: 0.85; }
-  100% { opacity: 1; }
+@keyframes countPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
 }
 
-/* Camada 2: Header Principal */
+/* ============ HEADER PRINCIPAL ============ */
 .mainHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 15px 40px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-/* ✨✨✨ ESTILO DO LOGO ATUALIZADO ✨✨✨ */
-/* Estilo para o link que envolve a imagem do logo */
-.logoLink {
+/* ============ SEÇÃO DA MARCA ============ */
+.brandSection {
   display: flex;
   align-items: center;
 }
 
-/* As classes .logo e .logoHighlight foram removidas pois não são mais necessárias */
+.brandLink {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.brandLink:hover {
+  transform: scale(1.02);
+}
+
+.brandText {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  line-height: 1;
+}
+
+.brandName {
+  color: var(--text-light);
+  font-weight: 800;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, var(--text-light), var(--primary-green));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.version {
+  color: var(--primary-green);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  background-color: rgba(79, 224, 49, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid rgba(79, 224, 49, 0.3);
+}
+
+.brandSubtext {
+  color: var(--primary-green);
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 2px;
+  opacity: 0.8;
+}
+
+/* ============ SEÇÃO DE CREDIBILIDADE ============ */
+.credibilitySection {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+}
+
+.badges {
+  display: flex;
+  gap: 16px;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-light);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid rgba(79, 224, 49, 0.2);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.badge:hover {
+  background-color: rgba(79, 224, 49, 0.1);
+  border-color: var(--primary-green);
+  transform: translateY(-2px);
+}
+
+.badgeIcon {
+  font-size: 0.9rem;
+}
+
+/* ============ SEÇÃO CTA ============ */
+.ctaSection {
+  display: flex;
+  align-items: center;
+}
 
 .ctaButton {
-  background-color: var(--primary-green);
+  background: linear-gradient(135deg, var(--primary-green), #5fe037);
   color: var(--text-dark);
-  padding: 8px 18px;
-  border-radius: 8px;
+  padding: 12px 24px;
+  border-radius: 12px;
   font-weight: 700;
   text-transform: uppercase;
-  font-size: 0.8rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
   border: none;
   cursor: pointer;
+  box-shadow: 0 4px 15px rgba(79, 224, 49, 0.3);
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .ctaButton:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px var(--primary-green);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(79, 224, 49, 0.5);
+  background: linear-gradient(135deg, #5fe037, #4fd631);
 }
 
-/* Responsividade */
+.ctaIcon {
+  font-size: 1rem;
+}
+
+.ctaPulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+  border-radius: 12px;
+  animation: pulse 2s infinite;
+  opacity: 0;
+}
+
+.ctaButton:hover .ctaPulse {
+  opacity: 1;
+}
+
+@keyframes pulse {
+  0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.7; }
+  50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.3; }
+  100% { transform: translate(-50%, -50%) scale(1.3); opacity: 0; }
+}
+
+.ctaButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: left 0.6s;
+}
+
+.ctaButton:hover::before {
+  left: 100%;
+}
+
+/* ============ RESPONSIVIDADE ============ */
+@media (max-width: 1024px) {
+  .badges {
+    gap: 10px;
+  }
+  
+  .badge {
+    font-size: 0.75rem;
+    padding: 5px 10px;
+  }
+  
+  .brandName {
+    font-size: 1.5rem;
+  }
+  
+  .brandSubtext {
+    font-size: 0.65rem;
+  }
+}
+
 @media (max-width: 768px) {
-  /* Não precisa de mudança no .logoLink aqui, a imagem se ajustará */
+  .mainHeader {
+    padding: 12px 20px;
+  }
+  
+  .credibilitySection {
+    display: none; /* Esconde badges no mobile para não ficar apertado */
+  }
+  
+  .brandSubtext {
+    display: none; /* Esconde subtexto no mobile */
+  }
+  
+  .brandName {
+    font-size: 1.4rem;
+  }
   
   .ctaButton {
-    padding: 8px 12px;
+    padding: 10px 16px;
     font-size: 0.75rem;
+    border-radius: 8px;
   }
   
   .urgencyText {
     font-size: 0.7rem;
   }
+  
   .vacancyCount {
     font-size: 0.8rem;
+    padding: 2px 6px;
+  }
+  
+  .urgencyIcon {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainHeader {
+    padding: 10px 15px;
+  }
+  
+  .brandName {
+    font-size: 1.2rem;
+  }
+  
+  .version {
+    font-size: 0.8rem;
+  }
+  
+  .urgencyText {
+    font-size: 0.65rem;
+  }
+  
+  .urgencyContent {
+    gap: 4px;
   }
 }
